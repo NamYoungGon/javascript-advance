@@ -1,0 +1,27 @@
+Javascript Immediately Invoked Function Expression IIFE - Tutorial
+
+즉시 실행 함수 표현식
+
+- 전역 영역 (Global) 오염을 피하기 위해서 사용
+- 외부와의 충돌 방지
+
+
+
+(function () {
+    /* code here */
+})()
+
+
+
+(function () {
+    /* code here */
+}())
+
+
+
+!function () { 
+    /* code here */ 
+}()
+
+
+

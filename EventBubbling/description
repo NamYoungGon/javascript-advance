@@ -1,0 +1,9 @@
+Event Bubbling
+
+- 이벤트 발생순서 : 자식 -> 부모
+- DOM.addEventListener(eventName, fn) 
+
+Event Capturing
+
+- 이벤트 발생순서 : 부모 -> 자식
+- DOM.addEventListener(eventName, fn, true) 
