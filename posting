@@ -1,0 +1,219 @@
+Array
+
+선언, 값 가져오기
+
+변경자 메서드 (배열을 수정합니다) 접근자 메서드(배열을 수정하지 않고 배열 일부를 반환합니다)
+
+push
+	배열의 끝에 하나 이상의 요소를 추가하고, 변경된 배열의 길이를 반환합니다.
+	
+	var subjects = ['국어', '수학', '사회', '과학', '영어'];
+	var length = subjects.push('역사');
+	
+	subjects; 	// ['국어', '수학', '사회', '과학', '영어', '역사'];
+	length; 	// 6
+	
+	length = subjects.push('물리', '화학');
+	
+	subjects; 	// ['국어', '수학', '사회', '과학', '영어', '역사', '물리', '화학'];
+	length; 	// 8
+	
+pop
+	배열에서 마지막 요소를 뽑아내고, 그 요소를 반환합니다.
+	
+	var subjects = ['국어', '수학', '사회', '과학', '영어'];
+	var popped = subjects.pop();
+	
+	subjects; 	// ['국어', '수학', '사회', '과학'];
+	popped; 	// '영어'
+	
+shift
+	배열에서 첫 번째 요소를 삭제하고 그 요소를 반환합니다.
+	
+	var subjects = ['국어', '수학', '사회', '과학', '영어'];
+	var shifted = subjects.shift();
+	
+	subjects; 	// ['수학', '사회', '과학', '영어'];
+	shifted; 	// '국어'
+	
+unshift
+	배열의 앞에 하나 이상의 요소를 추가하고 새로운 길이를 반환합니다.
+	
+	var subjects = ['국어', '수학', '사회', '과학', '영어'];
+	var length = subjects.unshift('역사');
+	
+	subjects; 	// ['역사', '국어', '수학', '사회', '과학', '영어'];
+	length; 	// 6
+	
+	length = subjects.unshift('물리', '화학');
+	
+	subjects; 	// ['물리', '화학', '역사', '국어', '수학', '사회', '과학', '영어'];
+	length; 	// 8
+	
+slice
+	배열의 일부를 추출한 새 배열을 반환합니다.
+	
+	var subjects = ['국어', '수학', '사회', '과학', '영어'];
+	
+	subjects.slice();		// ['국어', '수학', '사회', '과학', '영어']
+	subjects.slice(0);		// ['국어', '수학', '사회', '과학', '영어']
+	subjects.slice(0, 3);	// ['국어', '수학', '사회']
+	subjects.slice(1, 3);	// ['수학', '사회']
+	subjects.slice(2);		// ['사회', '과학', '영어']
+	subjects.slice(6);		// []
+	
+splice
+	배열에서 요소를 추가/삭제합니다.
+	
+	var subjects = ['국어', '수학', '사회', '과학', '영어'];
+	var deleteSubjects = subjects.splice(1);
+	
+	subjects;		// ['국어']
+	deleteSubjects;	// ['수학', '사회', '과학', '영어']	
+	
+	
+	var subjects = ['국어', '수학', '사회', '과학', '영어'];
+	var deleteSubjects = subjects.splice(1, 2);
+	
+	subjects;		// ['국어', '과학', '영어']
+	deleteSubjects;	// ['수학', '사회']
+	
+	
+	var subjects = ['국어', '수학', '사회'];
+	var deleteSubjects = subjects.splice(1, 0, '역사');
+	
+	subjects;		// ['국어', '역사', '수학', '사회']
+	deleteSubjects;	// []
+	
+	
+	var subjects = ['국어', '수학', '사회'];
+	var deleteSubjects = subjects.splice(1, 1, '역사', '물리', '화학');
+	
+	subjects;		// ['국어', '역사', '물리', '화학', '사회']
+	deleteSubjects;	// ['수학]
+		
+	
+concat
+	배열과, 인자로 주어진 배열/값을 결합해 새로운 배열을 만들고, 이 새 배열을 반환합니다.
+	
+	var subjects = ['국어', '수학', '사회'];
+	var newSubjects = subjects.concat(['과학', '영어']);
+	
+	console.log(subjects);		// ['국어', '수학', '사회'];
+	console.log(newSubjects);	// ['국어', '수학', '사회', '과학', '영어'];
+	
+indexOf
+	배열에서 지정한 값과 같은 요소의 첫 인덱스를 반환합니다. 없으면 -1을 반환합니다.
+	
+	var subjects = ['국어', '수학', '사회', '과학', '영어'];
+	
+	subjects.indexOf('국어');	// 0
+	subjects.indexOf('과학');	// 3
+	subjects.indexOf('역사');	// -1
+	
+lastIndexOf
+	배열에서 지정한 값과 같은 요소의 마지막 인덱스를 반환합니다. 없으면 -1을 반환합니다.
+	
+	var subjects = ['국어', '수학', '사회', '국어', '영어'];
+	
+	subjects.lastIndexOf('국어');	// 3
+	subjects.lastIndexOf('수학');	// 1
+	subjects.lastIndexOf('역사');	// -1
+	
+join
+	배열의 모든 요소를 문자열로 변환하여 합칩니다.
+	
+	var subjects = ['국어', '수학', '사회'];	
+	
+	subjects.join(', ');	// '국어, 수학, 사회'
+	
+reverse
+	배열의 요소 순서를 반전시킵니다. - 첫 번째가 마지막이 되고 마지막이 첫 번째가 됩니다.
+	
+	var subjects = ['국어', '수학', '사회', '과학', '영어'];
+	subjects.reverse();
+	
+	subjects; 	// ['영어', '과학', '사회', '수학', '국어'];
+
+sort
+	배열의 요소를 정렬하고 그 배열을 반환합니다.
+	
+	var subjects = ['국어', '수학', '사회', '과학', '영어'];
+	subjects.sort();
+	
+	subjects; // ['과학', '국어', '사회', '수학', '영어']
+
+	
+	
+	
+toString
+	배열과 요소를 반환하는 문자열을 반환합니다. Object.prototype.toString 메서드를 재정의합니다.
+
+
+반복자 메소드
+
+forEach
+	배열의 각각의 요소에 함수를 호출합니다.
+	
+	배열에 있는 순서대로 각 요소에 대해 callback 을 실행한다.
+	
+	var subjects = ['국어', '수학', '영어'];
+	subjects.forEach(function (data, index, array) {
+		console.log(data, index, array);
+	});
+	
+	// 국어, 0, ['국어', '수학', '영어']
+	// 수학, 1, ['국어', '수학', '영어']
+	// 영어, 2, ['국어', '수학', '영어']
+	
+	※ forEach 문은 stop 또는 break 가 불가능하다.
+	
+	
+map
+	배열 내의 모든 요소 각각에 대하여  제공된 함수(callback)를 호출하고, 그 결과를 모아서  만든 새로운 배열을 반환합니다.
+	
+	var numbers = [1, 2, 3, 4].map(function (number, index) {
+		return number * 2;
+	});
+	
+	numbers; // [2, 4, 6, 8]
+	
+	
+filter
+	주어진 필터링 함수의 값의 결과가 참인 경우의 배열 요소들만으로 새로운 배열을 생성하여 반환합니다
+
+
+every
+	만약 배열의 모든 요소가 제공된 검사 함수를 만족하면 true를 반환합니다.
+
+keys
+	배열의 각 인덱스에 대한 key들을 가지는 새로운 Array Iterator 객체를 반환합니다.
+reduce
+	배열의 각 값에 대해 왼쪽에서 오른쪽으로 함수를 적용하여 단일 값으로 줄입니다.
+reduceRight
+	배열의 각 값에 대해 오른쪽에서 왼쪽으로 함수를 적용하여 단일 값으로 줄입니다.
+some
+	배열중의 적어도 한 요소가 테스팅 함수를 만족시킨 다면 true를 반환합니다.
+  
+  
+  
+  ES6
+
+copyWithin
+배열 내의 지정된 요소들을 동일한 배열 내에서 복사합니다.
+
+fill
+배열 안의 시작 인덱스부터 끝 인덱스까지의 요소값을 지정된 정적 값으로 채웁니다.
+
+includes
+배열에 특정 요소가 포함돼있는지 알아내어 true 또는 false를 적절히 반환합니다.
+
+entries
+배열의 각 인덱스에 대한 키/값 쌍을 포함하는 새로운 배열 반복자 객체를 반환합니다.
+
+find
+주어진 테스팅 함수의 요구조건을 만족하는 배열 요소를 반환합니다. 그러한 배열요 요소가 없으면  undefined를 반환합니다.
+
+findIndex
+주어진 테스트 함수를 만족하는 배열의 첫 번째 요소에 대한 인덱스를 반환합니다. 그렇지 않으면 -1이 리턴됩니다.
+  
