@@ -50,3 +50,156 @@ rootElement.querySelectorAll(selector)
 document.querySelectorAll('div');
 document.getElementById('login-form').querySelectorAll('input');
 document.querySelectorAll('#login-form input');
+
+
+
+
+
+
+
+
+------------------------------------------------------
+
+동적 태그 생성 및 추가
+
+
+
+var grid = document.getElementById('grid');
+var gridTable = grid.firstElementChild;
+var gridTBody = gridTable.tBodies[0];
+
+var startTime = performance.now();
+
+// ...
+// ...
+
+var endTime = performance.now();
+console.log((endTime - startTime) + 'ms');
+
+
+
+
+
+1. createElement
+
+var fragment = document.createDocumentFragment();
+var trEle;
+var tdEle;
+for (var i = 0; i < 5000; i++) {
+  trEle = document.createElement('tr');
+  for (var j = 0; j < 5; j++) {
+    tdEle = document.createElement('td');
+    tdEle.textContent = i + ', ' + j;
+    trEle.appendChild(tdEle);
+  }
+
+  fragment.appendChild(trEle);
+}
+
+gridTBody.appendChild(fragment);
+
+6000ms
+
+cloneNode 5500ms
+
+
+
+
+
+
+
+
+
+2. innerHTML (string 조합, join)
+
+var str = '';
+for (var i = 0; i < 5000; i++) {
+  str += '<tr>';
+  for (var j = 0; j < 5; j++) {
+    str += '<td>';
+    str += i + ', ' + j;
+    str += '</td>';
+  }
+  str += '</tr>';
+}
+
+gridTBody.innerHTML = str;
+
+180ms
+
+
+function getStr(rowCount) {
+  var arr = [];
+  for (var i = 0; i < 5000; i++) {
+    arr.push('<tr>');
+    for (var j = 0; j < 5; j++) {
+      arr.push('<td>' + i + ', ' + j + '</td>');
+    }
+    arr.push('</tr>');
+  }
+
+  return arr.join('');
+}
+
+gridTBody.innerHTML = str;
+
+180ms
+
+
+
+
+
+
+
+
+
+
+
+function getStr(rowCount) {
+  var str = '';
+  for (var i = 0; i < 5000; i++) {
+    str += '<tr>';
+    for (var j = 0; j < 5; j++) {
+      str += '<td>';
+      str += i + ', ' + j;
+      str += '</td>';
+    }
+    str += '</tr>';
+  }
+
+  return str;
+}
+
+gridTBody.innerHTML = getStr(5000);
+
+
+
+gridTBody.innerHTML += getStr(5000);
+720ms
+
+
+
+function getStr(rowCount) {
+  var str = '';
+  for (var i = 0; i < 5000; i++) {
+    str += '<tr>';
+    for (var j = 0; j < 5; j++) {
+      str += '<td>';
+      str += i + ', ' + j;
+      str += '</td>';
+    }
+    str += '</tr>';
+  }
+
+  return str;
+}
+
+gridTBody.insertAdjacentHTML('beforeend', getStr(5000));
+
+
+
+gridTBody.insertAdjacentHTML('beforeend', getStr(5000));
+160ms
+
+
+
