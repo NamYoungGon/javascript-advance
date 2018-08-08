@@ -1,65 +1,3 @@
-getElementById
-document.getElementById(id);
-
-입력한 id 를 가지고 있는 요소를 반환한다.
-
-document.getElementById('phone');
-document.getElementById('address');
-
-
-
-getElementsByClassName
-rootElement.getElementsByClassName(className);
-
-입력한 class 를 가지고 있는 요소들을 반환한다.
-
-document.getElementsByClassName('row');
-document.getElementById('login-form').getElementsByClassName('state-required');
-
-
-
-getElementsByTagName
-rootElement.getElementsByTagName(tagName);
-
-입력한 tag 를 가지고 있는 요소들을 반환한다.
-
-document.getElementsByTagName('div');
-document.getElementById('login-form').getElementsByTagName('input');
-
-
-querySelector
-rootElement.querySelector(selector)
-
-입력한 selector 와 일치하는 요소를 반환한다.
-
-아이디가 숫자로 시작할 경우 에러가 발생한다.
-
-document.querySelector('form');
-document.getElementById('login-form').querySelector('[type=password]');
-document.querySelector('#login-form [type=password]');
-
-
-
-querySelectorAll
-rootElement.querySelectorAll(selector)
-
-입력한 selector 와 일치하는 요소들을 반환한다.
-
-아이디가 숫자로 시작할 경우 에러가 발생한다.
-
-document.querySelectorAll('div');
-document.getElementById('login-form').querySelectorAll('input');
-document.querySelectorAll('#login-form input');
-
-
-
-
-
-
-
-
-------------------------------------------------------
-
 동적 태그 생성 및 추가
 
 
@@ -133,12 +71,37 @@ for (var i = 0; i < 5000; i++) {
 
 gridTBody.appendChild(fragment);
 
-6000ms
+/*
+createElement
+5446.399862514831ms
+5795.700223443445ms
+5565.00004957398ms
 
-cloneNode 5500ms
+cloneNode
+5377.199995553365ms
+5397.89998614933ms
+5644.400138326425ms
 
+innerHTML
+886.7000224434923ms
+854.9997160763006ms
+881.9000594587303ms
 
+join
+883.0000009013452ms
+858.9998855291751ms
+849.9999549327462ms
 
+2번 innerHTML
+2300.099838989725ms
+2314.00008232285ms
+2244.4997670022967ms
+
+2번 insertAdjacentElement
+851.4000442860884ms
+886.799771298709ms
+913.2999174668362ms
+*/
 
 
 
@@ -235,5 +198,23 @@ gridTBody.insertAdjacentHTML('beforeend', getStr(5000));
 
 gridTBody.insertAdjacentHTML('beforeend', getStr(5000));
 160ms
+
+
+
+
+join
+
+  var strArr = [];
+  for (var i = 0; i < 5000; i++) {
+    strArr.push('<tr>');
+    for (var j = 0; j < 5; j++) {
+      strArr.push('<td>');
+      strArr.push(i + ', ' + j);
+      strArr.push('</td>');
+    }
+    strArr.push('</tr>');
+  }
+  
+  gridTBody.innerHTML = strArr.join('');
 
 
